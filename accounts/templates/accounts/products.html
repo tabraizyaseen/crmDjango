@@ -1,0 +1,62 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Products</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Product</th>
+							<th>Category</th>
+							<th>Price</th>
+						</tr>
+
+						{% for product in page.object_list %}
+						<tr>
+							<td>{{product.name}}</td>
+							<td>{{product.category}}</td>
+							<td>{{product.price}}</td>
+						</tr>
+						{% endfor %}
+
+					</table>
+					<nav aria-label="Page navigation example">
+					  <ul class="pagination justify-content-center">
+						  {% if page.has_previous %}
+						<li class="page-item">
+						  <a class="page-link" href="{% url 'products' %}?page={{ page.previous_page_number }}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+						  </a>
+						</li>
+						  {% endif %}
+						  {% for total in total_pages %}
+							  {% if total == page.number %}
+								<li class="page-item active"><a class="page-link" href="{% url 'products' %}?page={{ total }}">{{total}}</a></li>
+							  {% elif total > page.number|add:-2 and total < page.number|add:2 %}
+								<li class="page-item"><a class="page-link" href="{% url 'products' %}?page={{ total }}">{{total}}</a></li>
+							  {% endif %}
+						  {% endfor %}
+						  {% if page.has_next %}
+						<li class="page-item">
+						  <a class="page-link" href="{% url 'products' %}?page={{ page.next_page_number }}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						  </a>
+						</li>
+						  {% endif %}
+					  </ul>
+					</nav>
+
+				</div>
+			</div>
+
+		</div>
+
+{% endblock content %}

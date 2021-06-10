@@ -1,0 +1,39 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-body">
+            <form action="" method="POST" >
+                {% csrf_token %}
+                <h4>Customer : <b>{{customer}}</b></h4>
+                <hr>
+<!--                This one is for update-->
+                {% for fm in form %}
+                <table>
+                    <tr>
+                        <th>{{fm.label}}</th>
+                    </tr>
+                    <tr>
+                        <td>{{fm}}</td>
+                    </tr>
+                </table>
+                {% endfor %}
+
+
+<!--                If we are displaying data without loop then this below line code is not needed-->
+<!--                This one is adding 5 at a time-->
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    {{form}}
+                    <hr>
+                {% endfor %}
+                <input class="btn btn-sm btn-info" type="submit" name="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
