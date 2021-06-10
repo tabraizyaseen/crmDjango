@@ -18,7 +18,6 @@ from .filters import OrderFilter
 @login_required(login_url='login')
 @admin_only
 def home(request):
-    print('Home Page')
     orders = Order.objects.all()
     orders_last = orders.order_by('-id')[0:5]
     customers = Customer.objects.all()
