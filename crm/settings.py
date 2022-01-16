@@ -84,11 +84,16 @@ DATABASES = {
         'NAME': 'db_crm',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': '03009109196Aa',
+        'PASSWORD': 'tabipass',
         'PORT': 3306,
 
     }
 }
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Password validation
@@ -144,4 +149,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'shahanileader@gmail.com'
-EMAIL_HOST_PASSWORD = '03009109196Aa'
+EMAIL_HOST_PASSWORD = 'ffuigfkybqjtlmws'
